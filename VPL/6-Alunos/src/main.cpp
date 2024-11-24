@@ -8,12 +8,12 @@
 void reportAluno(const Aluno &aluno) {
   std::cout << aluno.getMatricula() << " " << aluno.getNome() << " ";
   const auto &notas = aluno.getNotas();
-  for (int i = 0; i < notas.size(); i++) {
-    std::cout << notas[i] << (i < notas.size() - 1 ? " " : "");
+  for (const int nota : notas) {
+    std::cout << nota << (nota != *(notas.end() - 1) ? " " : "");
   }
   std::cout << std::endl;
 
-  std::cout << std::fixed << std::setprecision(2) << aluno.getMedia();
+  std::cout << std::fixed << std::setprecision(2) << aluno.getMedia() << " ";
   std::cout << aluno.getNotaMax() << " " << aluno.getNotaMin() << std::endl;
 }
 
@@ -25,6 +25,7 @@ int main(int argc, char *argv[]) {
     int matricula;
     std::vector<int> notas;
     std::cin >> nome;
+
     if (nome == "END")
       break;
 
@@ -40,6 +41,6 @@ int main(int argc, char *argv[]) {
     return a.getNome()[0] < b.getNome()[0];
   });
 
-  for (const auto &aluno : alunos)
+  for (const Aluno &aluno : alunos)
     reportAluno(aluno);
 }

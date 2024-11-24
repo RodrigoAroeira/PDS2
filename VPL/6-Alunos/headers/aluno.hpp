@@ -21,4 +21,3 @@ private:
   std::string mNome;
   int mMatricula;
 };
-
