@@ -18,15 +18,14 @@ add_executable("${PROJECT_C}" "${SRC_FILES_C}")
 target_include_directories("${PROJECT_C}" PRIVATE include/C)
 
 target_include_directories(${PROJECT_NAME} PRIVATE include/CPP)
-target_compile_options(${PROJECT_NAME} PRIVATE -O3)
 
 if(CMAKE_C_COMPILER_ID STREQUAL "GNU" OR CMAKE_C_COMPILER_ID STREQUAL "Clang")
   # target_compile_options("${PROJECT_NAME}" PRIVATE -fpack-struct=0)
   target_compile_options("${PROJECT_C}" PRIVATE -fpack-struct=1)
 endif()
 
-add_custom_target(run
-COMMAND ${PROJECT_NAME}
-DEPENDS ${PROJECT_NAME}
-WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
-)
+add_custom_target(
+  run
+  COMMAND ${PROJECT_NAME}
+  DEPENDS ${PROJECT_NAME}
+  WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
