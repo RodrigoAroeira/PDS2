@@ -40,4 +40,5 @@ int main() {
   }
 
   cout << (ok ? "SIM" : "NAO") << endl;
+  delete[] nodeAddr;
 }

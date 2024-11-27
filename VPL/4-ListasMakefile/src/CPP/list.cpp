@@ -14,6 +14,15 @@ void List::insertNode(int data) {
   }
 }
 
+List::~List() {
+  Node *aux = head;
+  while (aux) {
+    Node *next = aux->next;
+    delete aux;
+    aux = next;
+  }
+}
+
 void List::display() const {
   for (auto aux = head; aux; aux = aux->next)
     std::cout << aux->data << " ";

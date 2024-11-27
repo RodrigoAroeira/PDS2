@@ -6,6 +6,7 @@ struct List {
   Node *head = nullptr;
   Node *tail = nullptr;
 
+  ~List();
   void insertNode(int data);
   void display() const;
   void inverte();
